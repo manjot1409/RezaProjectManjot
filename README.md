@@ -173,60 +173,50 @@ Path animations ( Inspiration from http://blog.csdn.net/tianjian4592/article/det
     path.close();
     ViewAnimator.animate(view).path(path).repeatCount(-1).start();
 ```
+Java Code
+package com.example.kks.rezaprojectmanjot;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity {
+    ImageView imageButton2;
+    Button button;
+
+    Random random;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        random = new Random();
+        imageButton2 = (ImageView) findViewById(R.id.imageButton2);
+        button = (Button) findViewById(R.id.button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RotateAnimation rotateAnimation = new RotateAnimation(0,random.nextInt(3600) + 360, RotateAnimation.RELATIVE_TO_SELF, 0.5f, RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+                rotateAnimation.setFillAfter(true);
+                rotateAnimation.setDuration(500);
+                rotateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+
+                imageButton2.startAnimation(rotateAnimation);
+            }
+        });
+    }
+}
 
 
-# Download
-
-<a href='https://ko-fi.com/A160LCC' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-
-Add into your **build.gradle**
-
-[![Download](https://api.bintray.com/packages/florent37/maven/ViewAnimator/images/download.svg)](https://bintray.com/florent37/maven/ViewAnimator/_latestVersion)
-
-```groovy
-compile 'com.github.florent37:viewanimator:1.1.0'
 ```
 
-# Community
 
-Looking for contributors, feel free to fork !
 
-# Credits
 
-Author: Florent Champigny   
-Contributor: [李玉江(liyujiang)](https://github.com/gzu-liyujiang/ViewAnimator)   
-
-Fiches Plateau Moto : [https://www.fiches-plateau-moto.fr/](https://www.fiches-plateau-moto.fr/)
-
-<a href="https://goo.gl/WXW8Dc">
-  <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
-</a>
-
-<a href="https://plus.google.com/+florentchampigny">
-  <img alt="Follow me on Google+"
-       src="https://raw.githubusercontent.com/florent37/DaVinci/master/mobile/src/main/res/drawable-hdpi/gplus.png" />
-</a>
-<a href="https://twitter.com/florent_champ">
-  <img alt="Follow me on Twitter"
-       src="https://raw.githubusercontent.com/florent37/DaVinci/master/mobile/src/main/res/drawable-hdpi/twitter.png" />
-</a>
-<a href="https://fr.linkedin.com/in/florentchampigny">
-  <img alt="Follow me on LinkedIn"
-       src="https://raw.githubusercontent.com/florent37/DaVinci/master/mobile/src/main/res/drawable-hdpi/linkedin.png" />
-</a>
-
-# License
-
-    Copyright 2015 florent37, Inc.
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
